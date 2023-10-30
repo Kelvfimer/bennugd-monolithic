@@ -1,7 +1,7 @@
 /*
- *  Copyright © 2006-2012 SplinterGU (Fenix/Bennugd)
- *  Copyright © 2002-2006 Fenix Team (Fenix)
- *  Copyright © 1999-2002 José Luis Cebrián Pagüe (Fenix)
+ *  Copyright ï¿½ 2006-2012 SplinterGU (Fenix/Bennugd)
+ *  Copyright ï¿½ 2002-2006 Fenix Team (Fenix)
+ *  Copyright ï¿½ 1999-2002 Josï¿½ Luis Cebriï¿½n Pagï¿½e (Fenix)
  *
  *  This file is part of Bennu - Game Development
  *
@@ -83,7 +83,7 @@ char * __bgdexport( mod_sound, globals_def ) =
 
 DLVARFIXUP  __bgdexport( mod_sound, globals_fixup )[] =
 {
-    /* Nombre de variable global, puntero al dato, tamaño del elemento, cantidad de elementos */
+    /* Nombre de variable global, puntero al dato, tamaï¿½o del elemento, cantidad de elementos */
     { "sound_freq", NULL, -1, -1 },
     { "sound_mode", NULL, -1, -1 },
     { "sound_channels", NULL, -1, -1 },
@@ -227,7 +227,7 @@ static void sound_close()
 {
     if ( !audio_initialized ) return;
 
-    //falta por comprobar que todo esté descargado
+    //falta por comprobar que todo estï¿½ descargado
 
     Mix_CloseAudio();
 
@@ -263,10 +263,15 @@ static int load_song( const char * filename )
 
     if ( !audio_initialized && sound_init() ) return ( 0 );
 
+    SDL_Log("estoy aqui %s", filename);
+
     if ( !( fp = file_open( filename, "rb0" ) ) ) return ( 0 );
+
+    SDL_Log("lleguÃ© mÃ¡s lejos %s", filename);
 
     if ( !( music = Mix_LoadMUS_RW( SDL_RWFromBGDFP( fp ), 0 ) ) )
     {
+         SDL_Log("if grande %s", filename);
         file_close( fp );
         fprintf( stderr, "Couldn't load %s: %s\n", filename, SDL_GetError() );
         return( 0 );
