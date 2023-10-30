@@ -273,7 +273,7 @@ static int load_song( const char * filename )
 
     SDL_Log("llegué más lejos %s", filename);
 
-    if ( !( music = Mix_LoadMUS_RW( SDL_RWFromBGDFP( fp ), 0 ) ) )
+    if ( !( music = Mix_LoadMUSType_RW( SDL_RWFromBGDFP( fp ), MUS_OGG , 0 ) ) )
     {
          SDL_Log("if grande %s", filename);
         file_close( fp );
