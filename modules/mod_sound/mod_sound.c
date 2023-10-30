@@ -127,14 +127,18 @@ static int SDLCALL __modsound_close_cb( SDL_RWops *context )
 
 static SDL_RWops *SDL_RWFromBGDFP( file *fp )
 {
+    SDL_Log("anresalloc %s", filename);
     SDL_RWops *rwops = SDL_AllocRW();
+    SDL_Log("despues alloc %s", filename);
     if ( rwops != NULL )
     {
+        SDL_Log("dentro if %s", filename);
         rwops->seek = __modsound_seek_cb;
         rwops->read = __modsound_read_cb;
         rwops->write = __modsound_write_cb;
         rwops->close = __modsound_close_cb;
         rwops->hidden.unknown.data1 = fp;
+        SDL_Log("fuera if %s", filename);
     }
     return( rwops );
 }
